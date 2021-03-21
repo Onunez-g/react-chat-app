@@ -2,9 +2,9 @@ import React from "react"
 import "./Header.scss"
 
 
-const Header = () => (
+const Header = props => (
   <div className="header">
-    <h2>Realtime chat app</h2>
+    <h2>{props.to || "General"}</h2>
   </div>
 )
 

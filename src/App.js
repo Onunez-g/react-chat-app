@@ -1,32 +1,30 @@
-import { connect, sendMsg } from "./Services/socket"
-import Header from "./Components/Header/Header"
-import ChatHistory from './Components/ChatHistory/ChatHistory'
-import ChatInput from './Components/ChatInput/ChatInput'
-import {useState, useEffect} from 'react'
-
+import {useState} from 'react'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import ChatPage from './Pages/ChatPage'
+import LoginPage from './Pages/LoginPage'
+import './App.css'
 
 function App() {
-  const [history, setHistory] = useState([]);
+  let [id, setId] = useState("")
+  let [isLogged, setLogged] = useState(false)
 
-  useEffect(() => {
-    connect((msg) => {
-      console.log("New message: ", msg);
-      setHistory([...history, msg]);
-      console.log(history)
-    })
-  });
-  const send = (event) => {
-    if (event.keyCode === 13) {
-      sendMsg(event.target.value);
-      event.target.value = "";
+  const login = (event) => {
+    console.log(id);
+    if (id) {
+      setLogged(true);
     }
-  };
+    event.preventDefault();
+  }
+  const fieldChange = (event) => {
+    setId(event.target.value);
+  }
   return (
-    <div className="App">
-      <Header/>
-      <ChatHistory chatHistory={history} />
-      <ChatInput send={send} />
-    </div>
+    <BrowserRouter >
+      <Switch>
+        <Route exact path="/" render={(props) => (<ChatPage id={id} isLogged={isLogged}/>)} />
+        <Route exact path="/login" render={(props) => (<LoginPage id={id} login={login} fieldChange={fieldChange} isLogged={isLogged} />)} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 

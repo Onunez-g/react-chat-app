@@ -1,0 +1,8 @@
+.Chat {
+  display: grid;
+  grid-template-columns: 320px calc(100% - 320px);
+  grid-template-rows: 100%;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}

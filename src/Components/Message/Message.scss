@@ -1,15 +1,35 @@
 .Message {
   display: block;
-  background-color: white;
-  margin: 10px auto;
+  background-color: #313139;
+  color: #F7F7F2;
+  margin: 10px;
   box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.2);
   padding: 10px 20px;
   border-radius: 5px;
   clear: both;
-
+  max-width: 400px;
+  width: fit-content;
+  word-wrap: break-word;
+  max-height: 140px;
+  height: fit-content;
   &.me {
-    color: white;
-    float: right;
-    background-color: #328ec4;
+    // float: right;
+    // margin-right: 30px;
+    background-color: #92352c;
+  }
+  &.max {
+    max-height: fit-content;
+  }
+  button {
+    display: block;
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color: #F7F7F2;
+    text-decoration: underline;
+    cursor: pointer;
   }
 }

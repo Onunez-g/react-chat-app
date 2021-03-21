@@ -1,8 +1,12 @@
-var socket = new WebSocket("ws://localhost:8080/ws")
+var socket = null
 
-let connect = cb => {
+let connect = (cb, id = "") => {
   console.log("Attempting to connect");
-
+  if (socket == null && id !== "")  {
+    socket = new WebSocket(`ws://localhost:8080/ws?id=${id}`)
+  } else if (socket == null) {
+    socket = new WebSocket("ws://localhost:8080/ws")
+  }
   socket.onopen = () => {
     console.log("Connected succesfully");
   };
@@ -21,9 +25,10 @@ let connect = cb => {
   };
 }
 
-let sendMsg = msg => {
+let sendMsg = (msg, from = "", to = "") => {
   console.log("sending msg: ", msg);
-  socket.send(msg);
+  let body = JSON.stringify({from,to,msg})
+  socket.send(body);
 }
 
 export { connect, sendMsg };

@@ -1,8 +1,11 @@
 .ChatHistory {
-  background-color: #f7f7f7;
   margin: 0;
   padding: 20px;
+  height: 95%;
+  width: 100%;
+  overflow-y: auto;
   h2 {
+    color: #F7F7F2;
     margin: 0;
     padding: 0;
   }

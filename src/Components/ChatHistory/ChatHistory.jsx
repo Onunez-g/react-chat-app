@@ -4,12 +4,15 @@ import Message from '../Message';
 
 const ChatHistory = props => {
   console.log(props.chatHistory);
-  let messages = props.chatHistory.map((msg) => (
-    <Message message={msg.data} />
-  ));
+  let messages = props.chatHistory.map((msg, index) => {
+    console.log(msg.data);
+    let data = JSON.parse(msg.data);
+    console.log(data);
+    return (
+    <Message key={index} id={props.id} message={data.body} />
+  )});
   return (
     <div className="ChatHistory">
-      <h2>Chat History</h2>
       {messages}
     </div>
   )

@@ -2,10 +2,21 @@ import React, {useState} from 'react'
 import './Message.scss'
 
 const Message = props => {
-  let temp = JSON.parse(props.message);
-  const [msg] = useState(temp);
+  let messageClass = props.message.from === props.id ? "Message me" : "Message";
+  let [stateClass, setClass] = useState(messageClass);
+  let [isCropped, setIsCropped] = useState(props.message.msg.length > 256)
+  const setToMax = () => {
+    let clss = `${messageClass} max`
+    setIsCropped(false)
+    setClass(clss)
+  }
+  const seeMore = () => {
+    return isCropped ? 
+      <p>{props.message.msg.substring(0, 255)}... <button onClick={setToMax}>See more</button></p> 
+    : <p>{props.message.msg} </p>
+  }
   return (
-    <div className="Message">{msg.body}</div>
+    <div className={stateClass}>{seeMore()}</div>
   );
 }
 
