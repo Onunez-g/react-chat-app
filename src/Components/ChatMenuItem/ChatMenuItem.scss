@@ -1,0 +1,17 @@
+.Item {
+  padding-left: 15px;
+  color: #F7F7F2;
+  border: 1 solid #212125;
+  cursor: pointer;
+  h4 {
+    color: inherit;
+    margin-bottom: 0;
+  }
+  p {
+    color: inherit;
+    font-size: 14px;
+  }
+}
+.Item:hover {
+  background-color: #242429;
+}

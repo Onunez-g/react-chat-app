@@ -8,6 +8,19 @@
   h2 {
     display: block;
     color: #F7F7F2;
-    margin: 10px 20px;
+    margin: 10px 20px 30px 20px;
+  }
+  input {
+    display: block;
+    background-color: #313139;
+    color: #F7F7F2;
+    padding: 10px;
+    margin: auto;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    width: 80%;
+    height: 30px;
+
   }
 }

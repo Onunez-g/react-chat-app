@@ -25,10 +25,11 @@ let connect = (cb, id = "") => {
   };
 }
 
-let sendMsg = (msg, from = "", to = "") => {
-  console.log("sending msg: ", msg);
-  let body = JSON.stringify({from,to,msg})
+let sendMsg = (msg, from = "", to = "all") => {
+  console.log("sending msg: ", to, msg);
+  let body = JSON.stringify({from,to,msg});
   socket.send(body);
+  console.log("sent");
 }
 
 export { connect, sendMsg };
