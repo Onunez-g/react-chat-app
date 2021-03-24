@@ -1,11 +1,13 @@
 var socket = null
 
+var apiUrlRoot = process.env.REACT_APP_APIURL;
+
 let connect = (cb, id = "") => {
   console.log("Attempting to connect");
   if (socket == null && id !== "")  {
-    socket = new WebSocket(`ws://localhost:8080/ws?id=${id}`)
+    socket = new WebSocket(`ws:${apiUrlRoot}/ws?id=${id}`)
   } else if (socket == null) {
-    socket = new WebSocket("ws://localhost:8080/ws")
+    socket = new WebSocket(`ws:${apiUrlRoot}/ws`)
   }
   socket.onopen = () => {
     console.log("Connected succesfully");

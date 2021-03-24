@@ -2,7 +2,7 @@ import axios from 'axios';
 
 class httpClient {
   axiosInstance = null;
-  apiUrlRoot = "http://localhost:8080"
+  apiUrlRoot = process.env.REACT_APP_APIURL;
 
   constructor() {
     const instance = axios.create({
