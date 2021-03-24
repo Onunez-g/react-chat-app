@@ -19,7 +19,7 @@ function App() {
     setId(event.target.value);
   }
   return (
-    <BrowserRouter basename="/react-chat-app">
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route exact path="/" render={(props) => (<ChatPage id={id} isLogged={isLogged}/>)} />
         <Route exact path="/login" render={(props) => (<LoginPage id={id} login={login} fieldChange={fieldChange} isLogged={isLogged} />)} />
